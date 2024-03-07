@@ -1,4 +1,5 @@
 import 'package:chat_app/core/widgets/customButtonWidget.dart';
+import 'package:chat_app/feture/auth/signUp/presintation/viewModel/cubit/sign_up_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,9 +25,8 @@ class SignUpButtonWidget extends StatelessWidget {
         if (_formKey.currentState!.validate()) {
           if (confirmPasswordController.text ==
               confirmPasswordController.text) {
-            //   BlocProvider.of<SignUpBloc>(context).add(
-            //     SignupCreateNewAccountEvent(userNameController.text,
-            //       emailController.text, passwordController.text));
+            BlocProvider.of<SignUpCubit>(context).signUpWithEmailAndPassword(
+                email: emailController.text, password: passwordController.text);
           }
         }
       },

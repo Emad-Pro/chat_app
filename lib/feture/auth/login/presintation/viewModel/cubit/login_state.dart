@@ -6,7 +6,7 @@ class LoginState extends Equatable {
   final String loginMessage;
 
   LoginState({
-    this.loginRequestState = RequestState.normal,
+    this.loginRequestState = RequestState.loading,
     this.loginMessage = '',
   });
   LoginState copyWith({

@@ -1,7 +1,7 @@
 import 'package:chat_app/core/enum/enum.dart';
 import 'package:chat_app/core/widgets/customTextFormWidget.dart';
-import 'package:chat_app/feture/auth/sinUp/presintation/view/method/signUpButtonWidget.dart';
-import 'package:chat_app/feture/auth/sinUp/presintation/viewModel/cubit/sign_up_state.dart';
+import 'package:chat_app/feture/auth/signUp/presintation/view/method/signUpButtonWidget.dart';
+import 'package:chat_app/feture/auth/signUp/presintation/viewModel/cubit/sign_up_state.dart';
 
 import 'package:flutter/material.dart';
 
@@ -79,13 +79,11 @@ class SignUpFormBodyWidget extends StatelessWidget {
                   obSecureText: true,
                   textEditingController: confirmPasswordController),
               const SizedBox(height: 25),
-              state.signUpCreateNewAccountState == RequestState.loading
-                  ? const Center(child: CircularProgressIndicator())
-                  : SignUpButtonWidget(
-                      formKey: _formKey,
-                      confirmPasswordController: confirmPasswordController,
-                      emailController: emailController,
-                      passwordController: passwordController),
+              SignUpButtonWidget(
+                  formKey: _formKey,
+                  confirmPasswordController: confirmPasswordController,
+                  emailController: emailController,
+                  passwordController: passwordController),
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

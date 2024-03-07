@@ -1,4 +1,4 @@
-import 'package:chat_app/feture/auth/sinUp/presintation/view/signUpScreen.dart';
+import 'package:chat_app/feture/auth/signUp/presintation/view/signUpScreen.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreeRedisterNowWidget extends StatelessWidget {
