@@ -8,11 +8,11 @@ class HomeState extends Equatable {
       this.userModel,
       this.userState = HomeRequestState.loading});
   final RequestState signOutRequestState;
-  final List<UserModel>? userModel;
+  final List<UserModel?>? userModel;
   final HomeRequestState userState;
   HomeState copyWith(
       {RequestState? signOutRequestState,
-      List<UserModel>? userModel,
+      List<UserModel?>? userModel,
       HomeRequestState? userState}) {
     return HomeState(
         signOutRequestState: signOutRequestState ?? this.signOutRequestState,

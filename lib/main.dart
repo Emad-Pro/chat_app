@@ -1,8 +1,5 @@
 import 'package:chat_app/core/firebase_options.dart';
 import 'package:chat_app/core/theme/theme.dart';
-
-import 'package:chat_app/feture/auth/login/presintation/viewModel/cubit/login_cubit.dart';
-import 'package:chat_app/feture/auth/signUp/presintation/viewModel/cubit/sign_up_cubit.dart';
 import 'package:chat_app/feture/home/presentation/viewModel/cubit/home_cubit.dart';
 import 'package:chat_app/feture/mainViewBody.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -34,25 +31,9 @@ class MyApp extends StatelessWidget {
         title: 'Chat App',
         theme: ThemeService().lightMode,
         darkTheme: ThemeService().darkMode,
-        themeMode: ThemeMode.dark,
+        themeMode: ThemeMode.light,
         home: const HomeViewBody(),
       ),
     );
   }
-}
-
-void configLoading() {
-  EasyLoading.instance
-    ..displayDuration = const Duration(milliseconds: 2000)
-    ..indicatorType = EasyLoadingIndicatorType.fadingCircle
-    ..loadingStyle = EasyLoadingStyle.dark
-    ..indicatorSize = 45.0
-    ..radius = 10.0
-    ..progressColor = Colors.yellow
-    ..backgroundColor = Colors.green
-    ..indicatorColor = Colors.yellow
-    ..textColor = Colors.yellow
-    ..maskColor = Colors.blue.withOpacity(0.5)
-    ..userInteractions = true
-    ..dismissOnTap = false;
 }

@@ -22,6 +22,13 @@ class LoginScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => LoginCubit(),
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.background,
+          foregroundColor: Theme.of(context).colorScheme.inversePrimary,
+          elevation: 0,
+          title: Text("Login"),
+          centerTitle: true,
+        ),
         backgroundColor: Theme.of(context).colorScheme.background,
         body: BlocConsumer<LoginCubit, LoginState>(
           listener: (context, state) {
@@ -42,74 +49,77 @@ class LoginScreen extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            return Form(
-              key: _formKey,
-              child: Center(
-                  child: Padding(
-                padding: const EdgeInsets.all(25.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.message_outlined,
-                      size: 80,
-                      color: Theme.of(context).colorScheme.inversePrimary,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "Chat App".toUpperCase(),
-                      style: const TextStyle(
-                        fontSize: 25,
+            return SingleChildScrollView(
+              child: Form(
+                key: _formKey,
+                child: Padding(
+                  padding: const EdgeInsets.all(25.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.message_outlined,
+                        size: 150,
+                        color: Theme.of(context).colorScheme.inversePrimary,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 25,
-                    ),
-                    CustomTextFormWidget(
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Enter Your Email";
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Chat App".toUpperCase(),
+                        style: const TextStyle(
+                          fontSize: 25,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      CustomTextFormWidget(
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Enter Your Email";
+                            }
+                            return null;
+                          },
+                          hintText: "Email",
+                          obSecureText: false,
+                          textEditingController: emailController),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CustomTextFormWidget(
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Enter Your Password";
+                            }
+                            return null;
+                          },
+                          hintText: "Password",
+                          obSecureText: true,
+                          textEditingController: passwordController),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      CustomButtonWidget(
+                        onTap: () {
+                          if (_formKey.currentState!.validate()) {
+                            BlocProvider.of<LoginCubit>(context)
+                                .loginWidthEmailAndPassword(
+                                    emailController.text,
+                                    passwordController.text);
                           }
-                          return null;
                         },
-                        hintText: "Email",
-                        obSecureText: false,
-                        textEditingController: emailController),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    CustomTextFormWidget(
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Enter Your Password";
-                          }
-                          return null;
-                        },
-                        hintText: "Password",
-                        obSecureText: true,
-                        textEditingController: passwordController),
-                    const SizedBox(
-                      height: 25,
-                    ),
-                    CustomButtonWidget(
-                      onTap: () {
-                        if (_formKey.currentState!.validate()) {
-                          BlocProvider.of<LoginCubit>(context)
-                              .loginWidthEmailAndPassword(emailController.text,
-                                  passwordController.text);
-                        }
-                      },
-                      text: "Login",
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const LoginScreeRedisterNowWidget()
-                  ],
+                        text: "Login",
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const LoginScreeRedisterNowWidget()
+                    ],
+                  ),
                 ),
-              )),
+              ),
             );
           },
         ),

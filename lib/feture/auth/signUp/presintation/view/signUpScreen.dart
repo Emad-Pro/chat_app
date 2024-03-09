@@ -6,7 +6,6 @@ import 'package:chat_app/feture/auth/signUp/presintation/viewModel/cubit/sign_up
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:motion_toast/motion_toast.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
@@ -23,7 +22,9 @@ class SignUpScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.background,
+          foregroundColor: Theme.of(context).colorScheme.inversePrimary,
           elevation: 0,
+          title: Text("SignUp Account"),
         ),
         backgroundColor: Theme.of(context).colorScheme.background,
         body: BlocConsumer<SignUpCubit, SignUpRegisterState>(
